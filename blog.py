@@ -37,6 +37,13 @@ class Blog:
         else:
             print("Username and/or Password is incorrect.")
 
+    # Method to log a user out
+    def log_user_out(self):
+        # Change the current_user attribute on this instance to None
+        self.current_user = None
+        print("You have successfully logged out.")
+
+
 class User:
     id_counter = 1 # Class attribute keeping track of User IDs
     
@@ -89,10 +96,12 @@ def run_blog():
         # if the current user is not None aka a user is logged in
         else:
             # Print menu options for logged in user
-            print("Quit")
+            print("1. Log Out")
             to_do = input("Which option would you like to choose? ")
-            if to_do == 'quit':
-                break
+            while to_do not in {'1'}:
+                to_do = input("Invalid option. Please choose 1. ")
+            if to_do == '1':
+                my_blog.log_user_out()
 
 
 # Execute the run_blog function to run the blog
